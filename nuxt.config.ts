@@ -1,3 +1,5 @@
+import { API_URL } from "./constants/constants";
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
     compatibilityDate: '2024-11-01',
@@ -6,7 +8,7 @@ export default defineNuxtConfig({
     openFetch: {
         clients: {
             spacetraders: {
-                baseURL: 'https://api.spacetraders.io/v2/',
+                baseURL: API_URL,
                 schema: './openapi/spacetraders/spacetraders.json'
             },
         },

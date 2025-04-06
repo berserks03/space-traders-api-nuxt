@@ -1,24 +1,22 @@
-import { API_URL } from '~/constants/constants';
-import type { Agent } from '~/types/Agent';
-import type { Contract } from '~/types/Contract';
 import type ErrorResponse from '~/types/ErrorResponse';
+
 const userdata = useUserData();
 const requestErrorMessage = useRequestErrorMessage();
 
 export const useAcceptContract = async (contractID: string) => {
     requestErrorMessage.value = '';
 
-    const { data, error } = await useFetch<{ data: { agent: Agent; contract: Contract } }>(
-        `${API_URL}my/contracts/${contractID}/accept`,
-        {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                Accept: 'application/json',
-                Authorization: `Bearer ${userdata.value.token}`,
-            },
-        }
-    );
+    const { data, error } = await useSpacetraders('/my/contracts/{contractId}/accept', {
+        path: {
+            contractId: contractID,
+        },
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+            Authorization: `Bearer ${userdata.value.token}`,
+        },
+    });
 
     if (error.value) {
         const errorData = error.value.data as unknown as { error: ErrorResponse };

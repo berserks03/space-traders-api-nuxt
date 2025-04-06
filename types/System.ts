@@ -6,6 +6,7 @@ export type Waypoint = components['schemas']['SystemWaypoint'];
 
 export type SystemType = components['schemas']['System']['type'];
 
+export type JumpGate = components['schemas']['JumpGate'];
 
 // examples
 //
@@ -20,6 +21,10 @@ type EndpointParams = paths['/systems/{systemSymbol}/waypoints/{waypointSymbol}/
 type validUrls = keyof paths;
 
 const url: validUrls = `/agents`;
+
+type FactionSymbol = components['schemas']['FactionSymbol'];
+
+const factionSymbol:FactionSymbol = 'COSMIC'
 //
 
 //

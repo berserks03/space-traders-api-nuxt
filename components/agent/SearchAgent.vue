@@ -27,7 +27,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useSearchAgent } from '~/composables/agent/useSearchAgent';
+import { useSearchAgent } from '~/composables/agent/useGetSearchAgent';
 import type { Agent } from '~/types/Agent';
 
 const username = ref<string>('');

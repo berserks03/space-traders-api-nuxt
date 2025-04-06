@@ -46,16 +46,12 @@
                     </span>
                 </div>
 
-                <!-- Deadlines -->
+                <!-- Deadline -->
                 <div class="col-span-2">
                     <span class="font-semibold">Deadline to Accept: </span>
                     <span class="text-gray-600">{{
                         formatDate(contract.deadlineToAccept ?? '')
                     }}</span>
-                </div>
-                <div class="col-span-2">
-                    <span class="font-semibold">Expiration: </span>
-                    <span class="text-gray-600">{{ formatDate(contract.expiration) }}</span>
                 </div>
             </div>
 
@@ -116,8 +112,8 @@
                                 Accept
                             </button>
                             <button
-                                class="px-4 py-2 bg-green-600 text-white font-semibold rounded hover:bg-green-700"
-                                @click="deliverContract(contract.id)"
+                                class="px-4 py-2 bg-green-600 text-white font-semibold rounded hover:bg-green-700 disabled:bg-slate-300"
+                                @click="deliverContract(contract.id, '', '', 0)"
                                 :disabled="!contract.accepted || contract.fulfilled"
                             >
                                 Deliver
@@ -138,13 +134,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { Contract } from '~/types/Contract';
+import type { ConractCardProps } from '~/types/ComponentProps';
 
-
-defineProps<{
-    contract: Contract;
-    fulfillContract: (id: string) => void;
-    deliverContract: (id: string) => void;
-    acceptContract: (id: string) => void;
-}>();
+defineProps<ConractCardProps>();
 </script>

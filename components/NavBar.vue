@@ -5,14 +5,21 @@
                 v-for="tab in tabs"
                 :key="tab.name"
                 :to="tab.href"
-                class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+                :class="[
+                    'px-3 py-2 rounded-md text-sm font-medium',
+                    route.path === tab.href
+                        ? 'bg-green-900 text-white'
+                        : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                ]"
             >
                 {{ tab.name }}
             </NuxtLink>
         </div>
+
         <div class="px-3 py-2 rounded-md text-sm font-medium text-gray-300">
             {{ `${agent.symbol} Credits: ${agent.credits}` }}
         </div>
+
         <div class="flex space-x-4">
             <NuxtLink
                 to="/authorize"
@@ -27,6 +34,7 @@
 <script lang="ts" setup>
 import type { Agent } from '~/types/Agent';
 
+const route = useRoute();
 
 const tabs = [
     { name: 'Agent', href: '/dashboard' },

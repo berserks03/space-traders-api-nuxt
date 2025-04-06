@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-wrap items-center justify-evenly min-h-screen  bg-gray-100 py-8">
+    <div class="flex flex-wrap items-center justify-evenly min-h-screen bg-gray-100 py-8">
         <NuxtLink to="/" class="text-blue-500 underline absolute top-0">Atpakaļ uz sākumu</NuxtLink>
         <div class="w-full max-w-md p-8 space-y-6 bg-white rounded shadow-md flex-[1_0_100%]">
             <h2 class="text-2xl font-bold text-center mb-8 text-black">Reģistrācija</h2>
@@ -28,6 +28,20 @@
                 placeholder="Lietotājvārds"
                 class="w-full px-4 py-2 border rounded text-black"
             />
+
+            <select
+                id="faction"
+                v-model="selectedFaction"
+                :class="[
+                    'block border px-3 py-2 rounded-md w-full',
+                    selectedFaction === '' ? 'text-gray-400' : 'text-black',
+                ]"
+            >
+                <option disabled selected value="">Organizācija</option>
+                <option v-for="symbol in factionSymbols" :key="symbol" :value="symbol">
+                    {{ symbol }}
+                </option>
+            </select>
             <button
                 @click="handleRegister"
                 class="w-full px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700"
@@ -61,8 +75,40 @@
 
         <div class="flex flex-col flex-[1_0_100%] items-center">
             <h3 class="mt-4 text-lg font-semibold text-black">Saglabātie lietotāji:</h3>
+
             <ul class="grid grid-flow-col-dense gap-4">
-                <template v-if="storedUsers.length">
+                <template v-if="isLoadingStoredUsers">
+                    <li class="text-gray-500 italic">
+                        <span>Loading... </span>
+                        <svg
+                            class="animate-spin h-5 w-5 text-gray-500 inline-block"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                        >
+                            <circle
+                                class="opacity-25"
+                                cx="12"
+                                cy="12"
+                                r="10"
+                                stroke="currentColor"
+                                stroke-width="4"
+                            ></circle>
+                            <path
+                                class="opacity-75"
+                                fill="currentColor"
+                                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                            ></path>
+                            <path
+                                class="opacity-75"
+                                fill="currentColor"
+                                transform="rotate(180 12 12)"
+                                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                            ></path>
+                        </svg>
+                    </li>
+                </template>
+                <template v-else-if="storedUsers.length">
                     <li v-for="(user, index) in storedUsers" :key="index">
                         <button
                             @click="handleLogin(user.token)"
@@ -88,8 +134,17 @@
 </template>
 
 <script lang="ts" setup>
-import type { Faction } from '~/types/Faction';
+import { useGetMyAgent } from '~/composables/agent/useGetMyAgent';
+import { useGetFactionsArrayWithoutToken } from '~/composables/faction/useGetFactionsArrayWithoutToken';
+import { useRegisterNewAgent } from '~/composables/global/useRegisterNewAgent';
+import type { Faction, FactionSymbol } from '~/types/Faction';
 import type LocalStorageUser from '~/types/LocalStorageData';
+
+const isLoadingStoredUsers = ref(true);
+
+const selectedFaction = ref<FactionSymbol | ''>('');
+const { data } = await useGetFactionsArrayWithoutToken(1, 20);
+const factionSymbols: FactionSymbol[] = data.value?.data.map((faction) => faction.symbol) ?? [];
 
 const storedUsers = useState<LocalStorageUser[]>('storedUsers', () => []);
 
@@ -101,7 +156,7 @@ const usernameErrorMessage = useUsernameErrorMessage();
 usernameErrorMessage.value = '';
 
 const handleRegister = async () => {
-    const faction = 'COSMIC';
+    const faction = selectedFaction.value !== '' ? selectedFaction.value : 'COSMIC';
 
     usernameErrorMessage.value = '';
 
@@ -125,7 +180,7 @@ const handleRegister = async () => {
                 agent: newUserData.agent,
                 contracts: [newUserData.contract],
                 faction: newUserData.faction,
-                ships: [newUserData.ship],
+                ships: newUserData.ships,
             };
             const newUser = { username: newUserData.agent.symbol, token: newUserData.token };
             const newUsers = [...storedUsers.value, newUser];
@@ -157,7 +212,7 @@ const handleLogin = async (providedToken = agentToken.value) => {
     try {
         const tokenExists = storedUsers.value.some((user) => user.token === providedToken);
 
-        const agent = await useAgentData(providedToken);
+        const agent = await useGetMyAgent(providedToken);
         userData.value = {
             token: providedToken,
             agent: agent,
@@ -190,6 +245,7 @@ onMounted(() => {
     if (users) {
         storedUsers.value = JSON.parse(users);
     }
+    isLoadingStoredUsers.value = false;
 });
 </script>
 

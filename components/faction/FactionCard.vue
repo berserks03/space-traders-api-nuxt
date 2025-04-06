@@ -25,7 +25,7 @@
         <h3 class="text-lg font-semibold mb-2 text-gray-800">Traits</h3>
         <ul class="list-disc list-inside space-y-2">
             <li v-for="trait in faction.traits" :key="trait.symbol">
-                <strong>{{ trait.name }} ({{ trait.symbol }})</strong>:
+                <strong>{{ trait.name }}</strong>:
                 <span class="text-gray-700">{{ trait.description }}</span>
             </li>
         </ul>

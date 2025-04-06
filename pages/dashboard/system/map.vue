@@ -24,48 +24,16 @@
 </template>
 
 <script lang="ts" setup>
-import type ErrorResponse from '~/types/ErrorResponse';
-import type { System } from '~/types/System';
+import { useGetSystem } from '~/composables/system/useGetSystem';
 
 definePageMeta({
     layout: 'dashboard',
 });
 
 const userdata = useUserData();
-
-const requestErrorMessage = useRequestErrorMessage();
-
-const getSystemFromWaypoint = (waypoint: string): string => {
-    const parts = waypoint.split('-');
-    return parts.length > 2 ? `${parts[0]}-${parts[1]}` : waypoint;
-};
-
-const getSystemData = async (token: string) => {
-    const { data, error, status } = await useFetch<{ data: System }>(
-        `${useUrl('systems')}/${getSystemFromWaypoint(userdata.value.agent.headquarters)}`,
-        {
-            method: 'GET',
-            headers: {
-                Accept: 'application/json',
-                Authorization: `Bearer ${token}`,
-            },
-        }
-    );
-
-    if (error.value) {
-        const errorData = error.value.data as unknown as { error: ErrorResponse };
-        requestErrorMessage.value = `Failed to login user: ${errorData.error.message}`;
-    }
-
-    return {
-        data: data.value?.data!,
-        status: status.value,
-    };
-};
-
 const systemData = useSystemData();
-const { data } = await getSystemData(userdata.value.token);
-systemData.value = data;
+
+systemData.value = await useGetSystem(getSystemFromWaypoint(userdata.value.agent.headquarters))
 
 const formatString = (str: string): string => {
     return str

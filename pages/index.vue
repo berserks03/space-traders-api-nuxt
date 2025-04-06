@@ -1,18 +1,9 @@
 <script setup lang="ts">
 import Ghost from '~/components/fun/Ghost/Ghost.vue';
 import ColaGlass from '~/components/fun/ColaGlass/ColaGlass.vue';
-import type { ServerStatusResponse } from '~/types/ServerStatusResponse';
+import { useGetSystemStatus } from '~/composables/global/useGetSystemStatus';
 
-const url = 'https://api.spacetraders.io/v2/';
-
-const { data: serverStatusData, error } = await useLazyFetch<ServerStatusResponse>(url, {
-    method: 'GET',
-    headers: { Accept: 'application/json' },
-});
-
-if (error.value) {
-    console.log(error);
-}
+const { data: serverStatusData } = await useGetSystemStatus();
 
 const featureData = [
     {

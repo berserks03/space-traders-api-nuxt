@@ -1,6 +1,4 @@
-import { API_URL } from '~/constants/constants';
 import type ErrorResponse from '~/types/ErrorResponse';
-import type { FulfillContractResponse } from '~/types/Responses';
 
 const userdata = useUserData();
 const requestErrorMessage = useRequestErrorMessage();
@@ -8,17 +6,17 @@ const requestErrorMessage = useRequestErrorMessage();
 export const useFulfillContract = async (contractID: string) => {
     requestErrorMessage.value = '';
 
-    const { data, error } = await useFetch<FulfillContractResponse>(
-        `${API_URL}my/contracts/${contractID}/fulfill`,
-        {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                Accept: 'application/json',
-                Authorization: `Bearer ${userdata.value.token}`,
-            },
-        }
-    );
+    const { data, error } = await useSpacetraders('/my/contracts/{contractId}/fulfill', {
+        path: {
+            contractId: contractID,
+        },
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+            Authorization: `Bearer ${userdata.value.token}`,
+        },
+    });
 
     if (error.value) {
         const errorData = error.value.data as unknown as { error: ErrorResponse };

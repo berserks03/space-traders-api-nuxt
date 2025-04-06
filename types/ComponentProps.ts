@@ -1,4 +1,5 @@
-import type { ServerStatusResponse } from './ServerStatusResponse';
+import type { Announcements, Description, Links, ServerStatusResponse } from './ServerStatusResponse';
+import type { Contract } from '~/types/Contract';
 
 export interface FeatureProps {
     icon: string;
@@ -6,22 +7,20 @@ export interface FeatureProps {
     description: string;
 }
 
-interface Announcement {
-    title: string;
-    body: string;
-}
-
-interface Link {
-    name: string;
-    url: string;
-}
-
+// export type FooterProps = Pick<ServerStatusResponse, 'description' | 'announcements' | 'links'>; //Too complex for Pick
 export interface FooterProps {
-    description: string;
-    announcements: Announcement[];
-    links: Link[];
+    description: Description;
+    announcements: Announcements;
+    links: Links;
 }
 
 export interface ServerStatusProps {
     data: ServerStatusResponse;
+}
+
+export interface ConractCardProps {
+    contract: Contract;
+    fulfillContract: (id: string) => void;
+    deliverContract: (id: string, shipSymbol: string, tradeSymbol: string, amount: number) => void;
+    acceptContract: (id: string) => void;
 }

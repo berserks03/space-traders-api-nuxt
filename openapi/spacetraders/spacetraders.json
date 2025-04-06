@@ -1,5 +1,5 @@
 {
-  "openapi": "3.1.1",
+  "openapi": "3.0.1",
   "info": {
     "title": "SpaceTraders API",
     "version": "2.3.0",
@@ -59,6 +59,7 @@
     "requestBodies": {},
     "schemas": {
       "FactionSymbol": {
+        "title": "FactionSymbol",
         "type": "string",
         "description": "The symbol of the faction.",
         "minLength": 1,
@@ -85,6 +86,7 @@
         ]
       },
       "Agent": {
+        "title": "Agent",
         "description": "Agent details.",
         "type": "object",
         "properties": {
@@ -128,6 +130,7 @@
         ]
       },
       "ContractPayment": {
+        "title": "ContractPayment",
         "type": "object",
         "description": "Payments for the contract.",
         "properties": {
@@ -146,6 +149,7 @@
         ]
       },
       "ContractDeliverGood": {
+        "title": "ContractDeliverGood",
         "description": "The details of a delivery contract. Includes the type of good, units needed, and the destination.",
         "type": "object",
         "properties": {
@@ -176,6 +180,7 @@
         ]
       },
       "ContractTerms": {
+        "title": "ContractTerms",
         "type": "object",
         "description": "The terms to fulfill the contract.",
         "properties": {
@@ -201,6 +206,7 @@
         ]
       },
       "Contract": {
+        "title": "Contract",
         "description": "Contract details.",
         "type": "object",
         "properties": {
@@ -259,6 +265,7 @@
         ]
       },
       "FactionTraitSymbol": {
+        "title": "FactionTraitSymbol",
         "type": "string",
         "description": "The unique identifier of the trait.",
         "enum": [
@@ -324,6 +331,7 @@
         ]
       },
       "FactionTrait": {
+        "title": "FactionTrait",
         "type": "object",
         "properties": {
           "symbol": {
@@ -345,6 +353,7 @@
         ]
       },
       "Faction": {
+        "title": "Faction",
         "description": "Faction details.",
         "type": "object",
         "properties": {
@@ -387,6 +396,7 @@
         ]
       },
       "ShipRole": {
+        "title": "ShipRole",
         "type": "string",
         "description": "The registered role of the ship",
         "enum": [
@@ -407,6 +417,7 @@
         ]
       },
       "ShipRegistration": {
+        "title": "ShipRegistration",
         "type": "object",
         "description": "The public registration information of the ship",
         "properties": {
@@ -431,6 +442,7 @@
         ]
       },
       "SystemSymbol": {
+        "title": "SystemSymbol",
         "type": "string",
         "description": "The symbol of the system.",
         "minLength": 1,
@@ -441,6 +453,7 @@
         }
       },
       "WaypointSymbol": {
+        "title": "WaypointSymbol",
         "type": "string",
         "description": "The symbol of the waypoint.",
         "minLength": 1,
@@ -451,6 +464,7 @@
         }
       },
       "WaypointType": {
+        "title": "WaypointType",
         "type": "string",
         "description": "The type of waypoint.",
         "enum": [
@@ -471,6 +485,7 @@
         ]
       },
       "ShipNavRouteWaypoint": {
+        "title": "ShipNavRouteWaypoint",
         "description": "The destination or departure of a ships nav route.",
         "type": "object",
         "properties": {
@@ -503,6 +518,7 @@
         ]
       },
       "ShipNavRoute": {
+        "title": "ShipNavRoute",
         "type": "object",
         "description": "The routing information for the ship's most recent transit or current location.",
         "properties": {
@@ -532,6 +548,7 @@
         ]
       },
       "ShipNavStatus": {
+        "title": "ShipNavStatus",
         "type": "string",
         "description": "The current status of the ship",
         "enum": [
@@ -541,6 +558,7 @@
         ]
       },
       "ShipNavFlightMode": {
+        "title": "ShipNavFlightMode",
         "type": "string",
         "description": "The ship's set speed when traveling between waypoints or systems.",
         "enum": [
@@ -552,6 +570,7 @@
         "default": "CRUISE"
       },
       "ShipNav": {
+        "title": "ShipNav",
         "type": "object",
         "description": "The navigation information of the ship.",
         "properties": {
@@ -580,6 +599,7 @@
         ]
       },
       "ShipCrew": {
+        "title": "ShipCrew",
         "type": "object",
         "description": "The ship's crew service and maintain the ship's systems and equipment.",
         "properties": {
@@ -626,6 +646,7 @@
         ]
       },
       "ShipComponentCondition": {
+        "title": "ShipComponentCondition",
         "type": "number",
         "format": "double",
         "description": "The repairable condition of a component. A value of 0 indicates the component needs significant repairs, while a value of 1 indicates the component is in near perfect condition. As the condition of a component is repaired, the overall integrity of the component decreases.",
@@ -633,6 +654,7 @@
         "maximum": 1
       },
       "ShipComponentIntegrity": {
+        "title": "ShipComponentIntegrity",
         "type": "number",
         "format": "double",
         "description": "The overall integrity of the component, which determines the performance of the component. A value of 0 indicates that the component is almost completely degraded, while a value of 1 indicates that the component is in near perfect condition. The integrity of the component is non-repairable, and represents permanent wear over time.",
@@ -640,6 +662,7 @@
         "maximum": 1
       },
       "ShipRequirements": {
+        "title": "ShipRequirements",
         "type": "object",
         "description": "The requirements for installation on a ship",
         "properties": {
@@ -658,11 +681,13 @@
         }
       },
       "ShipComponentQuality": {
+        "title": "ShipComponentQuality",
         "type": "number",
         "format": "integer",
         "description": "The overall quality of the component, which determines the quality of the component. High quality components return more ships parts and ship plating when a ship is scrapped. But also require more of these parts to repair. This is transparent to the player, as the parts are bought from/sold to the marketplace."
       },
       "ShipFrame": {
+        "title": "ShipFrame",
         "type": "object",
         "description": "The frame of the ship. The frame determines the number of modules and mounting points of the ship, as well as base fuel capacity. As the condition of the frame takes more wear, the ship will become more sluggish and less maneuverable.",
         "properties": {
@@ -683,7 +708,8 @@
               "FRAME_TRANSPORT",
               "FRAME_DESTROYER",
               "FRAME_CRUISER",
-              "FRAME_CARRIER"
+              "FRAME_CARRIER",
+              "FRAME_BULK_FREIGHTER"
             ],
             "description": "Symbol of the frame."
           },
@@ -737,6 +763,7 @@
         ]
       },
       "ShipReactor": {
+        "title": "ShipReactor",
         "type": "object",
         "description": "The reactor of the ship. The reactor is responsible for powering the ship's systems and weapons.",
         "properties": {
@@ -789,6 +816,7 @@
         ]
       },
       "ShipEngine": {
+        "title": "ShipEngine",
         "type": "object",
         "description": "The engine determines how quickly a ship travels between waypoints.",
         "properties": {
@@ -840,6 +868,7 @@
         ]
       },
       "Cooldown": {
+        "title": "Cooldown",
         "type": "object",
         "description": "A cooldown is a period of time in which a ship cannot perform certain actions.",
         "properties": {
@@ -871,6 +900,7 @@
         ]
       },
       "ShipModule": {
+        "title": "ShipModule",
         "type": "object",
         "description": "A module can be installed in a ship and provides a set of capabilities such as storage space or quarters for crew. Module installations are permanent.",
         "properties": {
@@ -930,6 +960,7 @@
         ]
       },
       "ShipMount": {
+        "title": "ShipMount",
         "type": "object",
         "description": "A mount is installed on the exterier of a ship.",
         "properties": {
@@ -1001,6 +1032,7 @@
         ]
       },
       "TradeSymbol": {
+        "title": "TradeSymbol",
         "type": "string",
         "enum": [
           "PRECIOUS_STONES",
@@ -1090,6 +1122,7 @@
           "FRAME_DESTROYER",
           "FRAME_CRUISER",
           "FRAME_CARRIER",
+          "FRAME_BULK_FREIGHTER",
           "REACTOR_SOLAR_I",
           "REACTOR_FUSION_I",
           "REACTOR_FISSION_I",
@@ -1145,11 +1178,13 @@
           "SHIP_LIGHT_SHUTTLE",
           "SHIP_ORE_HOUND",
           "SHIP_REFINING_FREIGHTER",
-          "SHIP_SURVEYOR"
+          "SHIP_SURVEYOR",
+          "SHIP_BULK_FREIGHTER"
         ],
         "description": "The good's symbol."
       },
       "ShipCargoItem": {
+        "title": "ShipCargoItem",
         "type": "object",
         "description": "The type of cargo item and the number of units.",
         "properties": {
@@ -1178,6 +1213,7 @@
         ]
       },
       "ShipCargo": {
+        "title": "ShipCargo",
         "type": "object",
         "properties": {
           "capacity": {
@@ -1206,6 +1242,7 @@
         "description": "Ship cargo details."
       },
       "ShipFuel": {
+        "title": "ShipFuel",
         "type": "object",
         "description": "Details of the ship's fuel tanks including how much fuel was consumed during the last transit or action.",
         "properties": {
@@ -1246,6 +1283,7 @@
         ]
       },
       "Ship": {
+        "title": "Ship",
         "description": "Ship details.",
         "type": "object",
         "properties": {
@@ -1311,6 +1349,7 @@
         ]
       },
       "SystemType": {
+        "title": "SystemType",
         "type": "string",
         "description": "The type of system.",
         "enum": [
@@ -1327,6 +1366,7 @@
         ]
       },
       "WaypointOrbital": {
+        "title": "WaypointOrbital",
         "type": "object",
         "description": "An orbital is another waypoint that orbits a parent waypoint.",
         "properties": {
@@ -1341,7 +1381,9 @@
         ]
       },
       "SystemWaypoint": {
+        "title": "SystemWaypoint",
         "type": "object",
+        "description": "Waypoint details.",
         "properties": {
           "symbol": {
             "$ref": "#/components/schemas/WaypointSymbol"
@@ -1379,6 +1421,7 @@
         ]
       },
       "SystemFaction": {
+        "title": "SystemFaction",
         "type": "object",
         "properties": {
           "symbol": {
@@ -1390,7 +1433,9 @@
         ]
       },
       "System": {
+        "title": "System",
         "type": "object",
+        "description": "System details.",
         "properties": {
           "symbol": {
             "type": "string",
@@ -1401,6 +1446,14 @@
             "type": "string",
             "minLength": 1,
             "description": "The symbol of the sector."
+          },
+          "constellation": {
+            "type": "string",
+            "description": "The constellation that the system is part of."
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the system."
           },
           "type": {
             "$ref": "#/components/schemas/SystemType"
@@ -1439,6 +1492,7 @@
         ]
       },
       "Meta": {
+        "title": "Meta",
         "description": "Meta details for pagination.",
         "type": "object",
         "x-examples": {
@@ -1475,6 +1529,7 @@
         ]
       },
       "WaypointFaction": {
+        "title": "WaypointFaction",
         "type": "object",
         "description": "The faction that controls the waypoint.",
         "properties": {
@@ -1487,6 +1542,7 @@
         ]
       },
       "WaypointTraitSymbol": {
+        "title": "WaypointTraitSymbol",
         "type": "string",
         "description": "The unique identifier of the trait.",
         "enum": [
@@ -1562,6 +1618,7 @@
         ]
       },
       "WaypointTrait": {
+        "title": "WaypointTrait",
         "type": "object",
         "properties": {
           "symbol": {
@@ -1583,6 +1640,7 @@
         ]
       },
       "WaypointModifierSymbol": {
+        "title": "WaypointModifierSymbol",
         "type": "string",
         "description": "The unique identifier of the modifier.",
         "enum": [
@@ -1594,6 +1652,7 @@
         ]
       },
       "WaypointModifier": {
+        "title": "WaypointModifier",
         "type": "object",
         "properties": {
           "symbol": {
@@ -1615,6 +1674,7 @@
         ]
       },
       "Chart": {
+        "title": "Chart",
         "type": "object",
         "description": "The chart of a system or waypoint, which makes the location visible to other agents.",
         "properties": {
@@ -1633,6 +1693,7 @@
         }
       },
       "Waypoint": {
+        "title": "Waypoint",
         "description": "A waypoint is a location that ships can travel to such as a Planet, Moon or Space Station.",
         "type": "object",
         "properties": {
@@ -1702,6 +1763,7 @@
         ]
       },
       "TradeGood": {
+        "title": "TradeGood",
         "type": "object",
         "description": "A good that can be traded for other goods or currency.",
         "properties": {
@@ -1724,6 +1786,7 @@
         ]
       },
       "MarketTransaction": {
+        "title": "MarketTransaction",
         "type": "object",
         "properties": {
           "waypointSymbol": {
@@ -1779,6 +1842,7 @@
         "description": "Result of a transaction with a market."
       },
       "SupplyLevel": {
+        "title": "SupplyLevel",
         "type": "string",
         "description": "The supply level of a trade good.",
         "enum": [
@@ -1791,6 +1855,7 @@
       },
       "ActivityLevel": {
         "type": "string",
+        "title": "ActivityLevel",
         "description": "The activity level of a trade good. If the good is an import, this represents how strong consumption is. If the good is an export, this represents how strong the production is for the good. When activity is strong, consumption or production is near maximum capacity. When activity is weak, consumption or production is near minimum capacity.",
         "enum": [
           "WEAK",
@@ -1806,6 +1871,7 @@
         }
       },
       "MarketTradeGood": {
+        "title": "MarketTradeGood",
         "type": "object",
         "properties": {
           "symbol": {
@@ -1852,7 +1918,8 @@
         ]
       },
       "Market": {
-        "description": "",
+        "title": "Market",
+        "description": "Market details.",
         "type": "object",
         "properties": {
           "symbol": {
@@ -1903,6 +1970,7 @@
         ]
       },
       "ShipType": {
+        "title": "ShipType",
         "description": "Type of ship",
         "type": "string",
         "enum": [
@@ -1917,10 +1985,12 @@
           "SHIP_LIGHT_SHUTTLE",
           "SHIP_ORE_HOUND",
           "SHIP_REFINING_FREIGHTER",
-          "SHIP_SURVEYOR"
+          "SHIP_SURVEYOR",
+          "SHIP_BULK_FREIGHTER"
         ]
       },
       "ShipyardTransaction": {
+        "title": "ShipyardTransaction",
         "type": "object",
         "description": "Results of a transaction with a shipyard.",
         "properties": {
@@ -1961,6 +2031,7 @@
         ]
       },
       "ShipyardShip": {
+        "title": "ShipyardShip",
         "description": "",
         "type": "object",
         "properties": {
@@ -2035,7 +2106,8 @@
         ]
       },
       "Shipyard": {
-        "description": "",
+        "title": "Shipyard",
+        "description": "Shipyard details.",
         "type": "object",
         "properties": {
           "symbol": {
@@ -2084,6 +2156,7 @@
         ]
       },
       "JumpGate": {
+        "title": "JumpGate",
         "type": "object",
         "description": "",
         "properties": {
@@ -2105,6 +2178,7 @@
         ]
       },
       "ConstructionMaterial": {
+        "title": "ConstructionMaterial",
         "description": "The details of the required construction materials for a given waypoint under construction.",
         "type": "object",
         "properties": {
@@ -2127,6 +2201,7 @@
         ]
       },
       "Construction": {
+        "title": "Construction",
         "type": "object",
         "description": "The construction details of a waypoint.",
         "properties": {
@@ -2153,6 +2228,7 @@
         ]
       },
       "SurveyDeposit": {
+        "title": "SurveyDeposit",
         "type": "object",
         "description": "A surveyed deposit of a mineral or resource available for extraction.",
         "properties": {
@@ -2166,6 +2242,7 @@
         ]
       },
       "Survey": {
+        "title": "Survey",
         "description": "A resource survey of a waypoint, detailing a specific extraction location and the types of resources that can be found there.",
         "type": "object",
         "properties": {
@@ -2210,6 +2287,7 @@
         ]
       },
       "ExtractionYield": {
+        "title": "ExtractionYield",
         "type": "object",
         "description": "A yield from the extraction operation.",
         "properties": {
@@ -2227,6 +2305,7 @@
         ]
       },
       "Extraction": {
+        "title": "Extraction",
         "description": "Extraction details.",
         "type": "object",
         "properties": {
@@ -2246,6 +2325,7 @@
       },
       "ShipConditionEvent": {
         "type": "object",
+        "title": "ShipConditionEvent",
         "description": "An event that represents damage or wear to a ship's reactor, frame, or engine, reducing the condition of the ship.",
         "properties": {
           "symbol": {
@@ -2305,6 +2385,7 @@
         ]
       },
       "SiphonYield": {
+        "title": "SiphonYield",
         "type": "object",
         "description": "A yield from the siphon operation.",
         "properties": {
@@ -2322,6 +2403,7 @@
         ]
       },
       "Siphon": {
+        "title": "Siphon",
         "description": "Siphon details.",
         "type": "object",
         "properties": {
@@ -2340,6 +2422,7 @@
         ]
       },
       "ScannedSystem": {
+        "title": "ScannedSystem",
         "description": "Details of a system was that scanned.",
         "type": "object",
         "properties": {
@@ -2379,6 +2462,7 @@
         ]
       },
       "ScannedWaypoint": {
+        "title": "ScannedWaypoint",
         "description": "A waypoint that was scanned by a ship.",
         "type": "object",
         "properties": {
@@ -2431,6 +2515,7 @@
         ]
       },
       "ScannedShip": {
+        "title": "ScannedShip",
         "description": "The ship that was scanned. Details include information about the ship that could be detected by the scanner.",
         "type": "object",
         "properties": {
@@ -2509,6 +2594,7 @@
         ]
       },
       "ShipModificationTransaction": {
+        "title": "ShipModificationTransaction",
         "type": "object",
         "properties": {
           "waypointSymbol": {
@@ -2544,6 +2630,7 @@
         "description": "Result of a transaction for a ship modification, such as installing a mount or a module."
       },
       "ScrapTransaction": {
+        "title": "ScrapTransaction",
         "type": "object",
         "properties": {
           "waypointSymbol": {
@@ -2573,6 +2660,7 @@
         "description": "Result of a scrap transaction."
       },
       "RepairTransaction": {
+        "title": "RepairTransaction",
         "type": "object",
         "properties": {
           "waypointSymbol": {
@@ -2658,6 +2746,10 @@
                         "waypoints"
                       ],
                       "properties": {
+                        "accounts": {
+                          "type": "integer",
+                          "description": "Total number of accounts registered on the game server."
+                        },
                         "agents": {
                           "type": "integer",
                           "description": "Number of registered agents in the game."
@@ -2868,8 +2960,11 @@
                         "faction": {
                           "$ref": "#/components/schemas/Faction"
                         },
-                        "ship": {
-                          "$ref": "#/components/schemas/Ship"
+                        "ships": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/Ship"
+                          }
                         },
                         "token": {
                           "description": "A Bearer token for accessing secured API endpoints.",
@@ -2881,7 +2976,7 @@
                         "agent",
                         "faction",
                         "contract",
-                        "ship"
+                        "ships"
                       ],
                       "type": "object"
                     }
@@ -5159,11 +5254,7 @@
                         "events": {
                           "type": "array",
                           "items": {
-                            "oneOf": [
-                              {
-                                "$ref": "#/components/schemas/ShipConditionEvent"
-                              }
-                            ]
+                            "$ref": "#/components/schemas/ShipConditionEvent"
                           }
                         }
                       },
@@ -5230,10 +5321,29 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "description": "",
+                  "description": "Success response for updating the nav configuration of a ship.",
                   "properties": {
                     "data": {
-                      "$ref": "#/components/schemas/ShipNav"
+                      "properties": {
+                        "nav": {
+                          "$ref": "#/components/schemas/ShipNav"
+                        },
+                        "fuel": {
+                          "$ref": "#/components/schemas/ShipFuel"
+                        },
+                        "events": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/ShipConditionEvent"
+                          }
+                        }
+                      },
+                      "required": [
+                        "nav",
+                        "fuel",
+                        "events"
+                      ],
+                      "type": "object"
                     }
                   },
                   "required": [
@@ -5243,7 +5353,7 @@
                 }
               }
             },
-            "description": "The updated nav data of the ship."
+            "description": "The updated data of the ship."
           }
         },
         "security": [
@@ -6028,7 +6138,7 @@
     },
     "/my/ships/{shipSymbol}/mounts/install": {
       "post": {
-        "description": "Install a mount on a ship.\n\nIn order to install a mount, the ship must be docked and located in a waypoint that has a `Shipyard` trait. The ship also must have the mount to install in its cargo hold.\n\nAn installation fee will be deduced by the Shipyard for installing the mount on the ship. ",
+        "description": "Install a mount on a ship.\n\nIn order to install a mount, the ship must be docked and located in a waypoint that has a `Shipyard` trait. The ship also must have the mount to install in its cargo hold.\n\nAn installation fee will be deduced by the Shipyard for installing the mount on the ship.",
         "operationId": "install-mount",
         "requestBody": {
           "content": {
@@ -6442,6 +6552,9 @@
         "summary": "Get Supply Chain",
         "description": "Describes which import and exports map to each other.",
         "parameters": [],
+        "tags": [
+          "Data"
+        ],
         "operationId": "get-supply-chain",
         "responses": {
           "200": {
@@ -6450,545 +6563,293 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "x-examples": {
-                    "Example 1": {
-                      "data": {
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
                         "exportToImportMap": {
-                          "LIQUID_HYDROGEN": [
-                            "MACHINERY"
-                          ],
-                          "LIQUID_NITROGEN": [
-                            "MACHINERY"
-                          ],
-                          "HYDROCARBON": [
-                            "MACHINERY"
-                          ],
-                          "AMMONIA_ICE": [
-                            "MACHINERY"
-                          ],
-                          "ICE_WATER": [
-                            "MACHINERY"
-                          ],
-                          "PRECIOUS_STONES": [
-                            "EXPLOSIVES"
-                          ],
-                          "QUARTZ_SAND": [
-                            "EXPLOSIVES"
-                          ],
-                          "SILICON_CRYSTALS": [
-                            "EXPLOSIVES"
-                          ],
-                          "IRON_ORE": [
-                            "EXPLOSIVES"
-                          ],
-                          "ALUMINUM_ORE": [
-                            "EXPLOSIVES"
-                          ],
-                          "SILVER_ORE": [
-                            "EXPLOSIVES"
-                          ],
-                          "COPPER_ORE": [
-                            "EXPLOSIVES"
-                          ],
-                          "PLATINUM_ORE": [
-                            "EXPLOSIVES"
-                          ],
-                          "GOLD_ORE": [
-                            "EXPLOSIVES"
-                          ],
-                          "URANITE_ORE": [
-                            "EXPLOSIVES"
-                          ],
-                          "MERITIUM_ORE": [
-                            "EXPLOSIVES"
-                          ],
-                          "DIAMONDS": [
-                            "EXPLOSIVES"
-                          ],
-                          "SHIP_SALVAGE": [
-                            "MACHINERY"
-                          ],
-                          "CULTURAL_ARTIFACTS": [
-                            "LAB_INSTRUMENTS"
-                          ],
-                          "PLASTICS": [
-                            "LIQUID_HYDROGEN"
-                          ],
-                          "FERTILIZERS": [
-                            "LIQUID_NITROGEN"
-                          ],
-                          "FUEL": [
-                            "HYDROCARBON"
-                          ],
-                          "IRON": [
-                            "IRON_ORE"
-                          ],
-                          "ALUMINUM": [
-                            "ALUMINUM_ORE"
-                          ],
-                          "POLYNUCLEOTIDES": [
-                            "LIQUID_HYDROGEN",
-                            "LIQUID_NITROGEN"
-                          ],
-                          "EXPLOSIVES": [
-                            "LIQUID_HYDROGEN",
-                            "LIQUID_NITROGEN"
-                          ],
-                          "COPPER": [
-                            "COPPER_ORE"
-                          ],
-                          "SILVER": [
-                            "SILVER_ORE"
-                          ],
-                          "PLATINUM": [
-                            "PLATINUM_ORE"
-                          ],
-                          "GOLD": [
-                            "GOLD_ORE"
-                          ],
-                          "URANITE": [
-                            "URANITE_ORE"
-                          ],
-                          "MERITIUM": [
-                            "MERITIUM_ORE"
-                          ],
-                          "AMMUNITION": [
-                            "IRON",
-                            "LIQUID_NITROGEN"
-                          ],
-                          "FAB_MATS": [
-                            "IRON",
-                            "QUARTZ_SAND"
-                          ],
-                          "FOOD": [
-                            "FERTILIZERS"
-                          ],
-                          "FABRICS": [
-                            "FERTILIZERS"
-                          ],
-                          "ELECTRONICS": [
-                            "SILICON_CRYSTALS",
-                            "COPPER"
-                          ],
-                          "MACHINERY": [
-                            "IRON"
-                          ],
-                          "EQUIPMENT": [
-                            "ALUMINUM",
-                            "PLASTICS"
-                          ],
-                          "JEWELRY": [
-                            "GOLD",
-                            "SILVER",
-                            "PRECIOUS_STONES",
-                            "DIAMONDS"
-                          ],
-                          "MICROPROCESSORS": [
-                            "SILICON_CRYSTALS",
-                            "COPPER"
-                          ],
-                          "FIREARMS": [
-                            "IRON",
-                            "AMMUNITION"
-                          ],
-                          "ASSAULT_RIFLES": [
-                            "ALUMINUM",
-                            "AMMUNITION"
-                          ],
-                          "CLOTHING": [
-                            "FABRICS"
-                          ],
-                          "SHIP_PLATING": [
-                            "ALUMINUM",
-                            "MACHINERY"
-                          ],
-                          "SHIP_PARTS": [
-                            "EQUIPMENT",
-                            "ELECTRONICS"
-                          ],
-                          "MEDICINE": [
-                            "FABRICS",
-                            "POLYNUCLEOTIDES"
-                          ],
-                          "DRUGS": [
-                            "AMMONIA_ICE",
-                            "POLYNUCLEOTIDES"
-                          ],
-                          "MILITARY_EQUIPMENT": [
-                            "ALUMINUM",
-                            "ELECTRONICS"
-                          ],
-                          "LAB_INSTRUMENTS": [
-                            "ELECTRONICS",
-                            "EQUIPMENT"
-                          ],
-                          "BIOCOMPOSITES": [
-                            "FABRICS",
-                            "POLYNUCLEOTIDES"
-                          ],
-                          "ADVANCED_CIRCUITRY": [
-                            "ELECTRONICS",
-                            "MICROPROCESSORS"
-                          ],
-                          "REACTOR_SOLAR_I": [
-                            "IRON",
-                            "MACHINERY"
-                          ],
-                          "REACTOR_FUSION_I": [
-                            "IRON",
-                            "MACHINERY"
-                          ],
-                          "REACTOR_FISSION_I": [
-                            "IRON",
-                            "MACHINERY"
-                          ],
-                          "REACTOR_CHEMICAL_I": [
-                            "IRON",
-                            "MACHINERY"
-                          ],
-                          "REACTOR_ANTIMATTER_I": [
-                            "IRON",
-                            "MACHINERY"
-                          ],
-                          "ENGINE_IMPULSE_DRIVE_I": [
-                            "IRON",
-                            "MACHINERY"
-                          ],
-                          "ENGINE_ION_DRIVE_I": [
-                            "IRON",
-                            "MACHINERY"
-                          ],
-                          "MODULE_CARGO_HOLD_I": [
-                            "IRON",
-                            "MACHINERY"
-                          ],
-                          "MODULE_CARGO_HOLD_II": [
-                            "ALUMINUM",
-                            "MACHINERY"
-                          ],
-                          "MODULE_MINERAL_PROCESSOR_I": [
-                            "IRON",
-                            "MACHINERY"
-                          ],
-                          "MODULE_GAS_PROCESSOR_I": [
-                            "IRON",
-                            "MACHINERY"
-                          ],
-                          "MODULE_CREW_QUARTERS_I": [
-                            "IRON",
-                            "MACHINERY",
-                            "FABRICS"
-                          ],
-                          "MODULE_ENVOY_QUARTERS_I": [
-                            "IRON",
-                            "MACHINERY",
-                            "FABRICS"
-                          ],
-                          "MODULE_PASSENGER_CABIN_I": [
-                            "IRON",
-                            "MACHINERY",
-                            "FABRICS"
-                          ],
-                          "MODULE_SCIENCE_LAB_I": [
-                            "PLATINUM",
-                            "MACHINERY",
-                            "ADVANCED_CIRCUITRY"
-                          ],
-                          "MODULE_ORE_REFINERY_I": [
-                            "PLATINUM",
-                            "MACHINERY"
-                          ],
-                          "MODULE_FUEL_REFINERY_I": [
-                            "PLATINUM",
-                            "MACHINERY"
-                          ],
-                          "MODULE_MICRO_REFINERY_I": [
-                            "PLATINUM",
-                            "MACHINERY"
-                          ],
-                          "MOUNT_GAS_SIPHON_I": [
-                            "IRON",
-                            "MACHINERY"
-                          ],
-                          "MOUNT_GAS_SIPHON_II": [
-                            "ALUMINUM",
-                            "MACHINERY"
-                          ],
-                          "MOUNT_SURVEYOR_I": [
-                            "IRON",
-                            "MACHINERY",
-                            "ELECTRONICS"
-                          ],
-                          "MOUNT_SURVEYOR_II": [
-                            "ALUMINUM",
-                            "MACHINERY",
-                            "ELECTRONICS"
-                          ],
-                          "MOUNT_SENSOR_ARRAY_I": [
-                            "IRON",
-                            "MACHINERY",
-                            "ELECTRONICS"
-                          ],
-                          "MOUNT_SENSOR_ARRAY_II": [
-                            "ALUMINUM",
-                            "MACHINERY",
-                            "ELECTRONICS"
-                          ],
-                          "MOUNT_MINING_LASER_I": [
-                            "IRON",
-                            "MACHINERY",
-                            "DIAMONDS"
-                          ],
-                          "MOUNT_MINING_LASER_II": [
-                            "ALUMINUM",
-                            "MACHINERY",
-                            "DIAMONDS"
-                          ],
-                          "MOUNT_TURRET_I": [
-                            "IRON",
-                            "MACHINERY"
-                          ],
-                          "MOUNT_LASER_CANNON_I": [
-                            "IRON",
-                            "MACHINERY",
-                            "DIAMONDS"
-                          ],
-                          "MOUNT_MISSILE_LAUNCHER_I": [
-                            "IRON",
-                            "MACHINERY"
-                          ],
-                          "QUANTUM_STABILIZERS": [
-                            "PLATINUM",
-                            "ADVANCED_CIRCUITRY"
-                          ],
-                          "ANTIMATTER": [
-                            "LAB_INSTRUMENTS",
-                            "ADVANCED_CIRCUITRY"
-                          ],
-                          "EXOTIC_MATTER": [
-                            "LAB_INSTRUMENTS",
-                            "ADVANCED_CIRCUITRY"
-                          ],
-                          "RELIC_TECH": [
-                            "LAB_INSTRUMENTS",
-                            "EQUIPMENT"
-                          ],
-                          "NOVEL_LIFEFORMS": [
-                            "LAB_INSTRUMENTS",
-                            "EQUIPMENT"
-                          ],
-                          "BOTANICAL_SPECIMENS": [
-                            "LAB_INSTRUMENTS",
-                            "EQUIPMENT"
-                          ],
-                          "AI_MAINFRAMES": [
-                            "ADVANCED_CIRCUITRY",
-                            "MICROPROCESSORS"
-                          ],
-                          "QUANTUM_DRIVES": [
-                            "ADVANCED_CIRCUITRY",
-                            "DIAMONDS"
-                          ],
-                          "GRAVITON_EMITTERS": [
-                            "ADVANCED_CIRCUITRY",
-                            "GOLD"
-                          ],
-                          "ROBOTIC_DRONES": [
-                            "ADVANCED_CIRCUITRY",
-                            "ALUMINUM"
-                          ],
-                          "CYBER_IMPLANTS": [
-                            "ADVANCED_CIRCUITRY",
-                            "BIOCOMPOSITES"
-                          ],
-                          "NANOBOTS": [
-                            "POLYNUCLEOTIDES",
-                            "LAB_INSTRUMENTS"
-                          ],
-                          "GENE_THERAPEUTICS": [
-                            "POLYNUCLEOTIDES",
-                            "LAB_INSTRUMENTS"
-                          ],
-                          "NEURAL_CHIPS": [
-                            "POLYNUCLEOTIDES",
-                            "ADVANCED_CIRCUITRY"
-                          ],
-                          "MOOD_REGULATORS": [
-                            "POLYNUCLEOTIDES",
-                            "LAB_INSTRUMENTS"
-                          ],
-                          "VIRAL_AGENTS": [
-                            "POLYNUCLEOTIDES",
-                            "LAB_INSTRUMENTS"
-                          ],
-                          "MICRO_FUSION_GENERATORS": [
-                            "ADVANCED_CIRCUITRY",
-                            "PLATINUM",
-                            "DIAMONDS"
-                          ],
-                          "SUPERGRAINS": [
-                            "FERTILIZERS",
-                            "POLYNUCLEOTIDES",
-                            "LAB_INSTRUMENTS"
-                          ],
-                          "LASER_RIFLES": [
-                            "DIAMONDS",
-                            "PLATINUM",
-                            "ADVANCED_CIRCUITRY"
-                          ],
-                          "HOLOGRAPHICS": [
-                            "GOLD",
-                            "SILVER",
-                            "ADVANCED_CIRCUITRY"
-                          ],
-                          "ENGINE_ION_DRIVE_II": [
-                            "PLATINUM",
-                            "ADVANCED_CIRCUITRY"
-                          ],
-                          "ENGINE_HYPER_DRIVE_I": [
-                            "PLATINUM",
-                            "ADVANCED_CIRCUITRY"
-                          ],
-                          "MODULE_CARGO_HOLD_III": [
-                            "PLATINUM",
-                            "MACHINERY",
-                            "ADVANCED_CIRCUITRY"
-                          ],
-                          "MODULE_JUMP_DRIVE_I": [
-                            "IRON",
-                            "ADVANCED_CIRCUITRY"
-                          ],
-                          "MODULE_JUMP_DRIVE_II": [
-                            "PLATINUM",
-                            "ADVANCED_CIRCUITRY",
-                            "GOLD"
-                          ],
-                          "MODULE_JUMP_DRIVE_III": [
-                            "PLATINUM",
-                            "ADVANCED_CIRCUITRY",
-                            "GOLD",
-                            "MERITIUM"
-                          ],
-                          "MODULE_WARP_DRIVE_I": [
-                            "IRON",
-                            "ADVANCED_CIRCUITRY"
-                          ],
-                          "MODULE_WARP_DRIVE_II": [
-                            "PLATINUM",
-                            "ADVANCED_CIRCUITRY",
-                            "URANITE"
-                          ],
-                          "MODULE_WARP_DRIVE_III": [
-                            "PLATINUM",
-                            "ADVANCED_CIRCUITRY",
-                            "MERITIUM",
-                            "MERITIUM"
-                          ],
-                          "MOUNT_GAS_SIPHON_III": [
-                            "PLATINUM",
-                            "MACHINERY",
-                            "ADVANCED_CIRCUITRY"
-                          ],
-                          "MODULE_SHIELD_GENERATOR_I": [
-                            "IRON",
-                            "MACHINERY",
-                            "URANITE"
-                          ],
-                          "MODULE_SHIELD_GENERATOR_II": [
-                            "ALUMINUM",
-                            "MACHINERY",
-                            "URANITE"
-                          ],
-                          "MOUNT_SURVEYOR_III": [
-                            "PLATINUM",
-                            "MACHINERY",
-                            "ADVANCED_CIRCUITRY"
-                          ],
-                          "MOUNT_SENSOR_ARRAY_III": [
-                            "PLATINUM",
-                            "MACHINERY",
-                            "ADVANCED_CIRCUITRY",
-                            "URANITE"
-                          ],
-                          "MOUNT_MINING_LASER_III": [
-                            "PLATINUM",
-                            "MACHINERY",
-                            "ADVANCED_CIRCUITRY",
-                            "URANITE"
-                          ],
-                          "SHIP_PROBE": [
-                            "SHIP_PLATING",
-                            "SHIP_PARTS"
-                          ],
-                          "SHIP_MINING_DRONE": [
-                            "SHIP_PLATING",
-                            "SHIP_PARTS"
-                          ],
-                          "SHIP_SIPHON_DRONE": [
-                            "SHIP_PLATING",
-                            "SHIP_PARTS"
-                          ],
-                          "SHIP_LIGHT_HAULER": [
-                            "SHIP_PLATING",
-                            "SHIP_PARTS"
-                          ],
-                          "SHIP_COMMAND_FRIGATE": [
-                            "SHIP_PLATING",
-                            "SHIP_PARTS"
-                          ],
-                          "SHIP_INTERCEPTOR": [
-                            "SHIP_PLATING",
-                            "SHIP_PARTS"
-                          ],
-                          "SHIP_EXPLORER": [
-                            "SHIP_PLATING",
-                            "SHIP_PARTS"
-                          ],
-                          "SHIP_LIGHT_SHUTTLE": [
-                            "SHIP_PLATING",
-                            "SHIP_PARTS"
-                          ],
-                          "SHIP_HEAVY_FREIGHTER": [
-                            "SHIP_PLATING",
-                            "SHIP_PARTS"
-                          ],
-                          "SHIP_ORE_HOUND": [
-                            "SHIP_PLATING",
-                            "SHIP_PARTS"
-                          ],
-                          "SHIP_REFINING_FREIGHTER": [
-                            "SHIP_PLATING",
-                            "SHIP_PARTS"
-                          ],
-                          "SHIP_SURVEYOR": [
-                            "SHIP_PLATING",
-                            "SHIP_PARTS"
-                          ]
+                          "type": "object",
+                          "properties": {
+                            "string": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            }
+                          }
                         }
+                      },
+                      "required": [
+                        "exportToImportMap"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "data"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/my/ships/{shipSymbol}/modules": {
+      "get": {
+        "operationId": "get-ship-modules",
+        "summary": "Get Ship Modules",
+        "description": "Get the modules installed on a ship.",
+        "tags": [
+          "Fleet"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "shipSymbol",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "The symbol of the ship"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved ship modules.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/ShipModule"
                       }
                     }
                   }
                 }
-              },
-              "application/xml": {
-                "schema": {
-                  "type": "object",
-                  "properties": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/my/ships/{shipSymbol}/modules/install": {
+      "post": {
+        "operationId": "install-ship-module",
+        "summary": "Install Ship Module",
+        "description": "Install a module on a ship.\n\nIn order to install a module, the ship must be docked and located in a waypoint that has a `Shipyard` trait. The ship also must have the module to install in its cargo hold.\n\nAn installation fee will be deduced by the Shipyard for installing the module on the ship.",
+        "tags": [
+          "Fleet"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "shipSymbol",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "The symbol of the ship"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "symbol"
+                ],
+                "properties": {
+                  "symbol": {
+                    "type": "string",
+                    "description": "The symbol of the module to install"
+                  }
                 }
               }
             }
           }
         },
-        "tags": [
-          "Data"
-        ],
-        "security": [
-          {
-            "AgentToken": []
+        "responses": {
+          "201": {
+            "description": "Successfully installed the module on the ship.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "agent",
+                        "modules",
+                        "cargo",
+                        "transaction"
+                      ],
+                      "properties": {
+                        "agent": {
+                          "$ref": "#/components/schemas/Agent"
+                        },
+                        "modules": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/ShipModule"
+                          }
+                        },
+                        "cargo": {
+                          "$ref": "#/components/schemas/ShipCargo"
+                        },
+                        "transaction": {
+                          "type": "object",
+                          "required": [
+                            "waypointSymbol",
+                            "shipSymbol",
+                            "tradeSymbol",
+                            "totalPrice",
+                            "timestamp"
+                          ],
+                          "properties": {
+                            "waypointSymbol": {
+                              "type": "string"
+                            },
+                            "shipSymbol": {
+                              "type": "string"
+                            },
+                            "tradeSymbol": {
+                              "type": "string"
+                            },
+                            "totalPrice": {
+                              "type": "integer"
+                            },
+                            "timestamp": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
-        ]
-      },
-      "parameters": []
+        }
+      }
+    },
+    "/my/ships/{shipSymbol}/modules/remove": {
+      "post": {
+        "operationId": "remove-ship-module",
+        "summary": "Remove Ship Module",
+        "description": "Remove a module from a ship.\n\nThe ship must be docked in a waypoint that has the `Shipyard` trait, and must have the module to remove installed.\n\nA removal fee will be deduced from the agent by the Shipyard.",
+        "tags": [
+          "Fleet"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "shipSymbol",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "The symbol of the ship"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "symbol"
+                ],
+                "properties": {
+                  "symbol": {
+                    "type": "string",
+                    "description": "The symbol of the module to remove"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successfully removed the module from the ship.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Remove Module 201 Response",
+                  "type": "object",
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "agent",
+                        "modules",
+                        "cargo",
+                        "transaction"
+                      ],
+                      "properties": {
+                        "agent": {
+                          "$ref": "#/components/schemas/Agent"
+                        },
+                        "modules": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/ShipModule"
+                          }
+                        },
+                        "cargo": {
+                          "$ref": "#/components/schemas/ShipCargo"
+                        },
+                        "transaction": {
+                          "type": "object",
+                          "required": [
+                            "waypointSymbol",
+                            "shipSymbol",
+                            "tradeSymbol",
+                            "totalPrice",
+                            "timestamp"
+                          ],
+                          "properties": {
+                            "waypointSymbol": {
+                              "type": "string"
+                            },
+                            "shipSymbol": {
+                              "type": "string"
+                            },
+                            "tradeSymbol": {
+                              "type": "string"
+                            },
+                            "totalPrice": {
+                              "type": "integer"
+                            },
+                            "timestamp": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

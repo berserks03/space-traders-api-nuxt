@@ -2,10 +2,10 @@ import { API_URL } from '~/constants/constants';
 import type ErrorResponse from '~/types/ErrorResponse';
 import type { Meta } from '~/types/Meta';
 
-const userdata = useUserData();
-const requestErrorMessage = useRequestErrorMessage();
 
 export const useGetList = async <T>(endpoint: string, page?: number, limit?: number) => {
+    const userdata = useUserData();
+    const requestErrorMessage = useRequestErrorMessage();
     requestErrorMessage.value = '';
 
     const params = new URLSearchParams();
@@ -25,17 +25,9 @@ export const useGetList = async <T>(endpoint: string, page?: number, limit?: num
 
     if (error.value) {
         const errorData = error.value.data as unknown as { error: ErrorResponse };
-        switch (errorData.error.code) {
-            case 422:
-                requestErrorMessage.value = 'Max limits 20';
-                break;
-            case 429:
-                requestErrorMessage.value = 'Pārāk daudz pieprasījumu';
-                break;
-            default:
-                requestErrorMessage.value = 'Kļūda iegūstot sarakstu';
-                break;
-        }
+        requestErrorMessage.value = `${getErrorText(errorData.error.code)}: ${
+            errorData.error.message
+        }`;
     }
 
     return {
