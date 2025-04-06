@@ -1,10 +1,10 @@
 import type ErrorResponse from '~/types/ErrorResponse';
 import type { Survey } from '~/types/Ship';
 
-const userdata = useUserData();
-const requestErrorMessage = useRequestErrorMessage();
-
 export const useMyShipExtractWithSurvey = async (shipSymbol: string, survey: Survey) => {
+    const userdata = useUserData();
+    const requestErrorMessage = useRequestErrorMessage();
+
     requestErrorMessage.value = '';
 
     const { data, error } = await useSpacetraders('/my/ships/{shipSymbol}/extract', {

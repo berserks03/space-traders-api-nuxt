@@ -1,9 +1,9 @@
 import type ErrorResponse from '~/types/ErrorResponse';
 
-const userdata = useUserData();
-const usernameErrorMessage = useUsernameErrorMessage();
-
 export const useSearchAgent = async (agentName: string) => {
+    const userdata = useUserData();
+    const usernameErrorMessage = useUsernameErrorMessage();
+
     usernameErrorMessage.value = '';
 
     const { data, error } = await useSpacetraders(`/agents/{agentSymbol}`, {

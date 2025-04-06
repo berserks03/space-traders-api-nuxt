@@ -1,15 +1,15 @@
 import type ErrorResponse from '~/types/ErrorResponse';
 
-const userdata = useUserData();
-const requestErrorMessage = useRequestErrorMessage();
-
 export const useMyShipScanSystems = async (
     shipSymbol: string,
     amount: number,
     fromCargo: boolean
 ) => {
-    requestErrorMessage.value = '';
+    const userdata = useUserData();
+    const requestErrorMessage = useRequestErrorMessage();
 
+    requestErrorMessage.value = '';
+    
     const { data, error } = await useSpacetraders('/my/ships/{shipSymbol}/refuel', {
         path: {
             shipSymbol: shipSymbol,

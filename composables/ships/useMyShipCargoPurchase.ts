@@ -1,16 +1,16 @@
 import type ErrorResponse from '~/types/ErrorResponse';
 import type { TradeSymbol } from '~/types/Ship';
 
-const userdata = useUserData();
-const requestErrorMessage = useRequestErrorMessage();
-
 export const useMyShipCargoPurchase = async (
     shipSymbol: string,
     tradeSymbol: TradeSymbol,
     amount: number
 ) => {
-    requestErrorMessage.value = '';
+    const userdata = useUserData();
+    const requestErrorMessage = useRequestErrorMessage();
 
+    requestErrorMessage.value = '';
+    
     const { data, error } = await useSpacetraders('/my/ships/{shipSymbol}/purchase', {
         path: {
             shipSymbol: shipSymbol,

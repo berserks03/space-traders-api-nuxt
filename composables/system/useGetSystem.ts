@@ -1,9 +1,9 @@
 import type ErrorResponse from '~/types/ErrorResponse';
 
-const userdata = useUserData();
-const requestErrorMessage = useRequestErrorMessage();
-
 export const useGetSystem = async (systemSymbol: string) => {
+    const userdata = useUserData();
+    const requestErrorMessage = useRequestErrorMessage();
+    
     requestErrorMessage.value = '';
 
     const { data, error } = await useSpacetraders('/systems/{systemSymbol}', {

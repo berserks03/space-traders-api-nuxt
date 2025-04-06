@@ -1,12 +1,12 @@
 import type ErrorResponse from '~/types/ErrorResponse';
 import type { RefineTradeSymbol } from '~/types/Ship';
 
-const userdata = useUserData();
-const requestErrorMessage = useRequestErrorMessage();
-
 export const useMyShipCargoRefine = async (shipSymbol: string, tradeSymbol: RefineTradeSymbol) => {
-    requestErrorMessage.value = '';
+    const userdata = useUserData();
+    const requestErrorMessage = useRequestErrorMessage();
 
+    requestErrorMessage.value = '';
+    
     const { data, error } = await useSpacetraders('/my/ships/{shipSymbol}/refine', {
         path: {
             shipSymbol: shipSymbol,

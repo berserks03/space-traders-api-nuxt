@@ -1,9 +1,9 @@
 import type ErrorResponse from '~/types/ErrorResponse';
 
-const userdata = useUserData();
-const requestErrorMessage = useRequestErrorMessage();
-
 export const useFulfillContract = async (contractID: string) => {
+    const userdata = useUserData();
+    const requestErrorMessage = useRequestErrorMessage();
+    
     requestErrorMessage.value = '';
 
     const { data, error } = await useSpacetraders('/my/contracts/{contractId}/fulfill', {

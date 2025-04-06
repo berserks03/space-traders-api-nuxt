@@ -1,9 +1,9 @@
 import type ErrorResponse from '~/types/ErrorResponse';
 
-const userdata = useUserData();
-const requestErrorMessage = useRequestErrorMessage();
-
 export const useGetShipyard = async (systemSymbol: string, waypointSymbol: string) => {
+    const userdata = useUserData();
+    const requestErrorMessage = useRequestErrorMessage();
+    
     requestErrorMessage.value = '';
 
     const { data, error } = await useSpacetraders(

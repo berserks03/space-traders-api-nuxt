@@ -2,10 +2,10 @@ import { API_URL } from '~/constants/constants';
 import type ErrorResponse from '~/types/ErrorResponse';
 import type { Meta } from '~/types/Meta';
 
-
 export const useGetList = async <T>(endpoint: string, page?: number, limit?: number) => {
     const userdata = useUserData();
     const requestErrorMessage = useRequestErrorMessage();
+
     requestErrorMessage.value = '';
 
     const params = new URLSearchParams();

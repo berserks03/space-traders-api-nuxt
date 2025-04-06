@@ -1,12 +1,12 @@
 import type ErrorResponse from '~/types/ErrorResponse';
 import type { ShipModuleSymbol } from '~/types/Ship';
 
-const userdata = useUserData();
-const requestErrorMessage = useRequestErrorMessage();
-
 export const useMyShipModuleRemove = async (shipSymbol: string, mountSymbol: ShipModuleSymbol) => {
-    requestErrorMessage.value = '';
+    const userdata = useUserData();
+    const requestErrorMessage = useRequestErrorMessage();
 
+    requestErrorMessage.value = '';
+    
     const { data, error } = await useSpacetraders('/my/ships/{shipSymbol}/modules/remove', {
         path: {
             shipSymbol: shipSymbol,

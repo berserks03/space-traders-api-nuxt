@@ -1,8 +1,5 @@
 import type ErrorResponse from '~/types/ErrorResponse';
 
-const userdata = useUserData();
-const requestErrorMessage = useRequestErrorMessage();
-
 export const useSupplyConstructionSite = async (
     systemSymbol: string,
     waypointSymbol: string,
@@ -10,6 +7,9 @@ export const useSupplyConstructionSite = async (
     tradeSymbol: string,
     amount: number
 ) => {
+    const userdata = useUserData();
+    const requestErrorMessage = useRequestErrorMessage();
+    
     requestErrorMessage.value = '';
 
     const { data, error } = await useSpacetraders(
