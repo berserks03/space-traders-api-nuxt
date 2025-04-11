@@ -25,6 +25,6 @@ definePageMeta({
 
 const userdata = useUserData();
 
-const { data, meta } = await useGetMyShipsList();
+const { data } = await useGetMyShipsList();
 userdata.value.ships = data;
 </script>

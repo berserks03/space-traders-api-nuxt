@@ -32,7 +32,6 @@
             <div class="p-4">
                 <!-- Navigation -->
                 <div v-if="activeTab === 'navigation'">
-                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Navigation</h3>
                     <p><strong>System:</strong> {{ ship.nav.systemSymbol }}</p>
                     <p><strong>Waypoint:</strong> {{ ship.nav.waypointSymbol }}</p>
                     <p><strong>Flight Mode:</strong> {{ ship.nav.flightMode }}</p>
@@ -46,7 +45,6 @@
 
                 <!-- Crew -->
                 <div v-if="activeTab === 'crew'">
-                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Crew</h3>
                     <p><strong>Current:</strong> {{ ship.crew.current }}</p>
                     <p><strong>Capacity:</strong> {{ ship.crew.capacity }}</p>
                     <p><strong>Required:</strong> {{ ship.crew.required }}</p>
@@ -56,7 +54,6 @@
 
                 <!-- Fuel -->
                 <div v-if="activeTab === 'fuel'">
-                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Fuel</h3>
                     <p><strong>Current:</strong> {{ ship.fuel.current }}</p>
                     <p><strong>Capacity:</strong> {{ ship.fuel.capacity }}</p>
                     <p><strong>Consumed:</strong> {{ ship.fuel.consumed?.amount }}</p>
@@ -64,7 +61,6 @@
 
                 <!-- Modules -->
                 <div v-if="activeTab === 'modules'">
-                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Modules</h3>
                     <ul class="list-disc list-inside">
                         <li v-for="module in ship.modules" :key="module.symbol">
                             <p>
@@ -77,7 +73,6 @@
 
                 <!-- Mounts -->
                 <div v-if="activeTab === 'mounts'">
-                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Mounts</h3>
                     <ul class="list-disc list-inside">
                         <li v-for="mount in ship.mounts" :key="mount.symbol">
                             <p>
