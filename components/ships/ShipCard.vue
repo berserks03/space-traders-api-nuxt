@@ -35,7 +35,23 @@
                     <p><strong>System:</strong> {{ ship.nav.systemSymbol }}</p>
                     <p><strong>Waypoint:</strong> {{ ship.nav.waypointSymbol }}</p>
                     <p><strong>Flight Mode:</strong> {{ ship.nav.flightMode }}</p>
-                    <p><strong>Status:</strong> {{ ship.nav.status }}</p>
+                    <p>
+                        <strong>Status:</strong> {{ ship.nav.status }}
+                        <button
+                            class="m-auto ml-2 px-4 text-white bg-blue-600 rounded hover:bg-blue-700"
+                            v-if="isDocked && !isInTransit"
+                            @click="toggleShipNavStatus"
+                        >
+                            Orbit
+                        </button>
+                        <button
+                            class="m-auto ml-2 px-4 text-white bg-blue-600 rounded hover:bg-blue-700"
+                            v-if="!isDocked && !isInTransit"
+                            @click="toggleShipNavStatus"
+                        >
+                            Dock
+                        </button>
+                    </p>
                     <p>
                         <strong>Departure:</strong>
                         {{ formatDate(ship.nav.route.departureTime) }}
@@ -90,8 +106,10 @@
 <script lang="ts" setup>
 import type { Ship } from '~/types/Ship';
 
+import { useDockMyShip } from '~/composables/ships/useDockMyShip';
+import { useOrbitMyShip } from '~/composables/ships/useOrbitMyShip';
 
-defineProps<{
+const props = defineProps<{
     ship: Ship;
 }>();
 
@@ -103,6 +121,27 @@ const tabs = [
     { id: 'mounts', name: 'Mounts' },
 ];
 
-// Reactive state for the active tab
 const activeTab = ref('navigation');
+
+const isDocked = computed(() => {
+    return props.ship.nav.status === 'DOCKED';
+});
+
+const isInTransit = computed(() => {
+    return props.ship.nav.status === 'IN_TRANSIT';
+});
+
+const toggleShipNavStatus = async () => {
+    let navData;
+
+    if (isDocked.value && !isInTransit.value) {
+        ({ nav: navData } = await useOrbitMyShip(props.ship.symbol));
+    } else if (!isDocked.value && !isInTransit.value) {
+        ({ nav: navData } = await useDockMyShip(props.ship.symbol));
+    }
+
+    if (navData) {
+        props.ship.nav.status = navData.status;
+    }
+};
 </script>
