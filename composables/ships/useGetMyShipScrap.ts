@@ -1,6 +1,6 @@
 import type ErrorResponse from '~/types/ErrorResponse';
 
-export const useGetMyShip = async (shipSymbol: string) => {
+export const useGetMyShipScrap = async (shipSymbol: string) => {
     const userdata = useUserData();
     const requestErrorMessage = useRequestErrorMessage();
 

@@ -1,6 +1,6 @@
 import type ErrorResponse from '~/types/ErrorResponse';
 
-export const useMyShipScanSystems = async (
+export const useRefuelMyShip = async (
     shipSymbol: string,
     amount: number,
     fromCargo: boolean
